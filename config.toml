@@ -1,0 +1,39 @@
+[common]
+# Commands that are required. Installation fails quickly if any of these are
+# not available or unable to be installed.
+required_commands = ["sudo"]
+
+# Desired commands. Installs using the current platforms `package_manager`.
+commands = [
+  "exa",
+  "htop",
+]
+
+[arch]
+package_manager = "yay"
+
+[mac]
+package_manager = "brew"
+
+# Programs to setup. Each of these have custom handlers, this does not support
+# any generic program. Installs where possible, otherwise warns when manual
+# installation is needed.
+programs = [
+  "alacritty",
+  "alfred",
+  "alt-tab",
+  "bitwarden",
+  "chrome",
+  "discord",
+  "dropbox",
+  "firefox",
+  "karabiner",
+  "sublime-text",
+  "vscode",
+  "xcode-command-line-tools",
+]
+
+# Settings to configure in MacOS.
+settings = [
+  "finder-show-hidden-files",
+]

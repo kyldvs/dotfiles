@@ -1,3 +1,4 @@
+mod config;
 mod utils;
 
 fn check_unix_common() {
