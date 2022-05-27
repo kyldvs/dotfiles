@@ -18,9 +18,8 @@ cargo run
 
 # Development
 
-Use nightly toolchain for development, mainly for more rustfmt features.
+Make sure nightly toolchain is available for more rustfmt options.
 
 ```
-rustup update nightly-aarch64-apple-darwin
-rustup default nightly
+rustup toolchain install nightly
 ```
