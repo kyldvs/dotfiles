@@ -15,3 +15,12 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 cargo run
 ```
+
+# Development
+
+Use nightly toolchain for development, mainly for more rustfmt features.
+
+```
+rustup update nightly-aarch64-apple-darwin
+rustup default nightly
+```
