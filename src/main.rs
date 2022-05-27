@@ -1,25 +1,25 @@
-use anyhow::{Context, Result};
-use clap::Parser;
+use anyhow::Result;
+use clap::{Parser, Subcommand};
+use dotfiles as lib;
 
 #[derive(Parser)]
 struct Cli {
-  pattern: String,
+  #[clap(subcommand)]
+  action: Action,
+}
 
-  #[clap(parse(from_os_str))]
-  path: std::path::PathBuf,
+#[derive(Subcommand)]
+enum Action {
+  Check,
 }
 
 fn main() -> Result<()> {
   let args = Cli::parse();
-  let path = &args.path;
-  let content = std::fs::read_to_string(path)
-    .with_context(|| format!("Could not read file `{}`", path.display()))?;
 
-  for line in content.lines() {
-    if line.contains(&args.pattern) {
-      println!("{}", line);
-    }
-  }
+  let action = &args.action;
+  match action {
+    | Action::Check => lib::check(),
+  };
 
   Ok(())
 }

@@ -9,3 +9,4 @@ license = "MIT"
 [dependencies]
 anyhow = "1.0"
 clap = { version = "3.1.18", features = ["derive"] }
+which = "4.2.5"
