@@ -1,12 +1,25 @@
 [common]
 # Commands that are required. Installation fails quickly if any of these are
 # not available or unable to be installed.
-required_commands = ["sudo"]
+required_commands = [
+  "sudo",
+  "which",
+]
 
 # Desired commands. Installs using the current platforms `package_manager`.
 commands = [
   "exa",
   "htop",
+  "git",
+  "cargo",
+  "rustup",
+  "fd",
+  "ripgrep",
+  "vim",
+  "nvim",
+  "nano",
+  "tmux",
+  "bat",
 ]
 
 [arch]
