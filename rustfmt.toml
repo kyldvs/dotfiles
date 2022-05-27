@@ -3,6 +3,11 @@ tab_spaces = 2
 newline_style = "Unix"
 match_arm_leading_pipes = "Always"
 match_block_trailing_comma = true
+use_field_init_shorthand = true
+# Outdated default, the `try!` macro is deprecated now.
+use_try_shorthand = true
+# Allow all things to be max width.
+use_small_heuristics = "Max"
 
 # Unstable features
 wrap_comments = true
