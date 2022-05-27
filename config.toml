@@ -35,5 +35,5 @@ programs = [
 
 # Settings to configure in MacOS.
 settings = [
-  "finder-show-hidden-files",
+  "finder-always-show-hidden-files",
 ]
