@@ -2,5 +2,4 @@
   "rust-analyzer.rustfmt.extraArgs": [
     "+nightly"
   ],
-  "workbench.editor.wrapTabs": true
 }

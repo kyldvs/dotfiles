@@ -1,5 +1,11 @@
 # Notes
 
+# Next things to do:
+
+- Consider disable_steps when deciding steps to run.
+- Implement "path" step.
+- Add "replace_dirs = true" so that windows can rewrite everything in "dirs"
+
 # Rust modules
 
 - https://www.sheshbabu.com/posts/rust-module-system/

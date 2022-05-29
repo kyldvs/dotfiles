@@ -1,8 +1,12 @@
+# Configuration for running the `dotfiles` CLI. Each step can generally be
+# configured via [step.<name>] and [step.<name>.<platform>].
+#
+# Arrays are typically combined between general and platform specific
+# configuration, they do not overwrite each other.
+
 [control]
-# Disabling all steps makes running `dotfiles` a no-op. Each step can generally
-# be configured via [step.<name>] and [step.<name>.<platform>].
 steps = [
-  # Prints a welcome message. Used for testing, does not affect behavior.
+  # Prints a welcome message. Primarily used for testing.
   "welcome",
 
   # Check that $PATH is setup.
@@ -17,9 +21,31 @@ steps = [
 ]
 
 [control.mac]
-# Disable specific steps for this platform.
 disable_steps = [
   "welcome",
+]
+
+# Step "path" verifies that the $PATH environment variable is setup.
+#
+#   - "~" can be used to represent the $HOME directory.
+#   - otherwise path is expected to contain exactly the directory given.
+[step.path]
+dirs = [
+  "/bin",
+  "/sbin",
+  "/usr/bin",
+  "/usr/sbin",
+  "/usr/local/bin",
+  # Not in my path right now, should it be?
+  # "/usr/local/sbin",
+
+  # Rust
+  "~/.cargo/bin",
+]
+
+[step.path.mac]
+dirs = [
+  "/opt/homebrew/bin",
 ]
 
 [step.settings.mac]
