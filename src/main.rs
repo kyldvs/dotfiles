@@ -1,25 +1,31 @@
+use std::path::PathBuf;
+
 use anyhow::Result;
-use clap::{Parser, Subcommand};
+use clap::{ErrorKind, IntoApp, Parser};
 use dotfiles as lib;
 
 #[derive(Parser)]
 struct Cli {
-  #[clap(subcommand)]
-  action: Action,
-}
-
-#[derive(Subcommand)]
-enum Action {
-  Check,
+  /// Path to "config.toml" that should be used. Refer to examples for
+  /// available options.
+  #[clap(short, long)]
+  config: Option<PathBuf>,
 }
 
 fn main() -> Result<()> {
   let args = Cli::parse();
 
-  let action = &args.action;
-  match action {
-    | Action::Check => lib::check(),
-  };
+  match args.config {
+    | None => {
+      let mut command = Cli::command();
+      let _ = command
+        .error(ErrorKind::EmptyValue, "Missing required --config option.")
+        .exit();
+    },
+    | Some(config) => {
+      lib::run(config);
+    },
+  }
 
   Ok(())
 }

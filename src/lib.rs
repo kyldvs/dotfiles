@@ -1,11 +1,14 @@
 mod config;
 mod out;
+mod steps;
 mod utils;
 
 use core::slice::Iter;
 use std::cmp::max;
+use std::path::PathBuf;
 
 use colored::Colorize;
+use config::parse::{self, Config};
 use out::out;
 
 fn get_max_len(items: Iter<&str>) -> usize {
@@ -66,7 +69,7 @@ fn check_path() {
   };
 
   let overview = format!(
-    "Verified {}/{} expected locations",
+    "Found {}/{} expected locations",
     expected.len() - missing.len(),
     expected.len()
   );
@@ -113,4 +116,50 @@ pub fn check() {
     out(1, "All done, goodbye!".green());
     out(0, "");
   }
+}
+
+// TODO: Move this into config or utils module at some point.
+fn get_steps(config: Config) -> Vec<String> {
+  let empty = vec![];
+  match config.control {
+    | None => empty,
+    | Some(control) => match control.steps {
+      | None => empty,
+      | Some(steps) => {
+        let mut clean_steps = Vec::new();
+        for step in steps.iter() {
+          if step.is_str() {
+            clean_steps.push(String::from(step.as_str().unwrap()));
+          };
+        }
+        return clean_steps;
+      },
+    },
+  }
+}
+
+pub fn run(path: PathBuf) {
+  let config = parse::parse(path);
+  let steps = get_steps(config);
+
+  // Add some padding at the start.
+  out(0, "");
+
+  for step_dynamic in steps {
+    // This is probably terrible, strings in rust confuse me.
+    let step = step_dynamic.as_str();
+
+    out(1, format!("[step] {}", step).blue());
+    match step {
+      | "fonts" => steps::fonts::run(),
+      | "path" => steps::path::run(),
+      | "welcome" => steps::welcome::run(),
+      | _ => out(2, "[warning] Unknown step".yellow()),
+    }
+    out(0, "");
+  }
+
+  // Say goodbye and add some padding at the end.
+  out(1, "All done, goodbye!".green());
+  out(0, "");
 }

@@ -1,0 +1,34 @@
+[control]
+dry_run = false
+
+# Disabling all steps makes running dotiles a no-op. Each step can generally
+# be configured via [step.<name>] and [step.<name>.<platform>]. Platforms
+# supported are: "mac", "arch", and "windows".
+steps = [
+  # Prints a welcome message. Used for testing, does not affect behavior.
+  "welcome",
+
+  # Check that $PATH is setup.
+  "path",
+
+  # Check that certain fonts are installed.
+  "fonts",
+
+  "settings",
+  "commands",
+  "programs",
+]
+
+[control.mac]
+# Disable specific steps for this platform.
+disable_steps = [
+  "welcome",
+]
+
+[step.settings.mac]
+finder_show_extensions = true
+finder_show_hidden_files = true
+finder_warn_on_extension_change = false
+spaces_rearrange_automatically = false
+dock_orientation = "left"
+dock_autohide = true

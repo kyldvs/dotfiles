@@ -1,5 +1,9 @@
 # Notes
 
+# Rust modules
+
+- https://www.sheshbabu.com/posts/rust-module-system/
+
 # Mac Defaults
 
 - https://macos-defaults.com/
@@ -23,3 +27,15 @@ defaults write com.apple.dock "orientation" -string "left"
 # Auto-hide the dock.
 defaults write com.apple.dock "autohide" -bool "true"
 ```
+
+# Starship
+
+Cross platform prompt.
+
+- https://starship.rs/
+
+# Scoop
+
+Windows installer of things.
+
+(or chocolatey)
