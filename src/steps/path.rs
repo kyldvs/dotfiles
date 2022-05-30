@@ -6,7 +6,7 @@ use toml::Value;
 
 use crate::config::parse::{Config, Path, PathPlatform, Step};
 use crate::out::out;
-use crate::utils;
+use crate::utils::platform;
 
 fn get_max_len(items: Iter<&String>) -> usize {
   let len = items.fold(0, |acc, c| max(acc, c.len()));
@@ -21,11 +21,11 @@ fn get_path_dirs(config: &Config) -> Vec<String> {
   let mac: Option<&PathPlatform> = path.and_then(|x| x.mac.as_ref());
   let arch: Option<&PathPlatform> = path.and_then(|x| x.arch.as_ref());
   let windows: Option<&PathPlatform> = path.and_then(|x| x.windows.as_ref());
-  let platform = if utils::is_mac() {
+  let platform = if platform::is_mac() {
     mac
-  } else if utils::is_arch_linux() {
+  } else if platform::is_arch_linux() {
     arch
-  } else if utils::is_windows() {
+  } else if platform::is_windows() {
     windows
   } else {
     None

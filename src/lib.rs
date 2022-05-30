@@ -8,6 +8,7 @@ use std::path::PathBuf;
 use colored::Colorize;
 use config::parse::{self, Config};
 use out::out;
+use utils::command;
 
 fn _check_common_commands() {
   let commands = [
@@ -19,7 +20,7 @@ fn _check_common_commands() {
   let max_len = 20;
 
   for command in commands {
-    let exists = utils::has_command(command);
+    let exists = command::has(command);
     let result = if exists { "Good".green() } else { "Missing".red() };
     out(2, format!("{:max_len$}  {}", command, result));
   }
