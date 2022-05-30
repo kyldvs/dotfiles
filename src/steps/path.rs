@@ -4,8 +4,8 @@ use std::cmp::max;
 use colored::Colorize;
 use toml::Value;
 
-use crate::config::parse::{Config, Path, PathPlatform, Step};
 use crate::out::out;
+use crate::state::config::{Config, Path, PathPlatform, Step};
 use crate::utils::platform;
 
 fn get_max_len(items: Iter<&String>) -> usize {

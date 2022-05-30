@@ -1,13 +1,15 @@
-mod config;
 mod out;
+mod state;
 mod steps;
+mod tui;
 mod utils;
 
 use std::path::PathBuf;
 
 use colored::Colorize;
-use config::parse::{self, Config};
 use out::out;
+use state::config::{self, Config};
+use state::State;
 use utils::command;
 
 fn _check_common_commands() {
@@ -46,8 +48,8 @@ fn get_steps(config: &Config) -> Vec<String> {
   }
 }
 
-pub fn run(path: PathBuf) {
-  let config = parse::parse(path);
+pub fn _run(path: PathBuf) {
+  let config = config::parse(path);
 
   let steps = get_steps(&config);
 
@@ -71,4 +73,14 @@ pub fn run(path: PathBuf) {
   // Say goodbye and add some padding at the end.
   out(1, "All done, goodbye!".green());
   out(0, "");
+
+  // Try taking things over.
+  let mut _s = State {
+    // as
+    raw_term: None,
+  };
+}
+
+pub fn run(path: PathBuf) {
+  tui::activate(path);
 }

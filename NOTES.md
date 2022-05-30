@@ -45,3 +45,21 @@ Cross platform prompt.
 Windows installer of things.
 
 (or chocolatey)
+
+# TUI Design notes
+
+
+```bash
+$ dotfiles
+Reading config:
+  [x] ~/.config/dotfiles/config.toml ... done
+Running steps:
+  [x] welcome ....... done
+  [x] path .......... done
+  [.] fonts ......... needs user input
+  [ ] settings ......
+  [ ] commands ......
+  [ ] programs ......
+Step fonts:
+  Install fonts using `brew`? [Y/n]:
+```

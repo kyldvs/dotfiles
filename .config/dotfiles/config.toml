@@ -1,0 +1,113 @@
+# Configuration for running the `dotfiles` CLI. Each step can generally be
+# configured via [step.<name>] and [step.<name>.<platform>].
+#
+# Arrays are typically combined between general and platform specific
+# configuration, they do not overwrite each other.
+
+[control]
+steps = [
+  # Prints a welcome message. Primarily used for testing.
+  "welcome",
+
+  # Check that $PATH is setup.
+  "path",
+
+  # Check that certain fonts are installed.
+  "fonts",
+
+  "settings",
+  "commands",
+  "programs",
+]
+
+[control.mac]
+disable_steps = [
+  "welcome",
+]
+
+# Step "path" verifies that the $PATH environment variable is setup.
+#
+#   - "~" can be used to represent the $HOME directory.
+#   - otherwise path is expected to contain exactly the directory given.
+[step.path]
+dirs = [
+  "/bin",
+  "/sbin",
+  "/usr/bin",
+  "/usr/sbin",
+  "/usr/local/bin",
+  # Not in my path right now, should it be?
+  # "/usr/local/sbin",
+
+  # Rust
+  "~/.cargo/bin",
+]
+
+[step.path.mac]
+dirs = [
+  "/opt/homebrew/bin",
+]
+
+[step.settings.mac]
+finder_show_extensions = true
+finder_show_hidden_files = true
+finder_warn_on_extension_change = false
+spaces_rearrange_automatically = false
+dock_orientation = "left"
+dock_autohide = true
+
+
+##### Old config #####
+
+[common]
+# Commands that are required. Installation fails quickly if any of these are
+# not available or unable to be installed.
+required_commands = [
+  "sudo",
+  "which",
+]
+
+# Desired commands. Installs using the current platforms `package_manager`.
+commands = [
+  "exa",
+  "htop",
+  "git",
+  "cargo",
+  "rustup",
+  "fd",
+  "ripgrep",
+  "vim",
+  "nvim",
+  "nano",
+  "tmux",
+  "bat",
+]
+
+[arch]
+package_manager = "yay"
+
+[mac]
+package_manager = "brew"
+
+# Programs to setup. Each of these have custom handlers, this does not support
+# any generic program. Installs where possible, otherwise warns when manual
+# installation is needed.
+programs = [
+  "alacritty",
+  "alfred",
+  "alt-tab",
+  "bitwarden",
+  "chrome",
+  "discord",
+  "dropbox",
+  "firefox",
+  "karabiner",
+  "sublime-text",
+  "vscode",
+  "xcode-command-line-tools",
+]
+
+# Settings to configure in MacOS.
+settings = [
+  "finder-always-show-hidden-files",
+]
