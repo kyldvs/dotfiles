@@ -1,15 +1,21 @@
+mod emoji;
 mod out;
 mod state;
 mod steps;
+mod terminal;
 mod tui;
 mod utils;
 
 use std::path::PathBuf;
+use std::thread;
+use std::time::Duration;
 
 use colored::Colorize;
 use out::out;
 use state::config::{self, Config};
 use state::State;
+use terminal::Terminal;
+use termion::color;
 use utils::command;
 
 fn _check_common_commands() {
@@ -82,5 +88,53 @@ pub fn _run(path: PathBuf) {
 }
 
 pub fn run(path: PathBuf) {
-  tui::activate(path);
+  // tui::activate(path);
+
+  let mut t = Terminal::new();
+
+  t.append(format!(
+    "{}Parsing Config:{}",
+    color::Fg(color::Blue),
+    color::Fg(color::Reset)
+  ));
+
+  t.append(format!("  {}", path.display()));
+
+  t.append(format!(
+    "{}Running steps:{}",
+    color::Fg(color::Blue),
+    color::Fg(color::Reset)
+  ));
+
+  let one = t.append("  [1/3] 😀 Hello, world!");
+  let two = t.append("  [2/3] 😀   Hello again, world!");
+  let _three = t.append("  [3/3]  😀 This is some more text");
+
+  let frame = Duration::from_millis(16);
+
+  for _ in 0..10 {
+    thread::sleep(frame);
+    t.update(two, "  [2/3] New string...");
+
+    thread::sleep(frame);
+    t.update(one, "  [1/3] Another new string...");
+    t.update(two, "  [2/3] Another new string...");
+
+    thread::sleep(frame);
+    t.update(two, "  [2/3] Old string...");
+
+    thread::sleep(frame);
+    t.update(
+      two,
+      format!(
+        "{}{}{}",
+        color::Fg(color::Cyan),
+        "  [2/3] This is a very very very very very long string",
+        color::Fg(color::Reset),
+      ),
+    );
+
+    thread::sleep(frame);
+    t.update(two, "  [2/3] This is another test string...");
+  }
 }

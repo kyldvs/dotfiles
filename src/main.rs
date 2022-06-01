@@ -23,5 +23,6 @@ fn main() -> Result<()> {
   let config = args.config.unwrap_or(config_default);
 
   dotfiles::run(config);
+
   Ok(())
 }
