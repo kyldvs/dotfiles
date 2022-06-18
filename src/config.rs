@@ -17,13 +17,13 @@ pub struct Control {
   pub steps: Option<Array>,
   pub disable_steps: Option<Array>,
 
-  pub arch: Option<ControlPlatform>,
-  pub mac: Option<ControlPlatform>,
-  pub windows: Option<ControlPlatform>,
+  pub arch: Option<ControlBase>,
+  pub mac: Option<ControlBase>,
+  pub windows: Option<ControlBase>,
 }
 
 #[derive(Deserialize)]
-pub struct ControlPlatform {
+pub struct ControlBase {
   pub steps: Option<Array>,
   pub disable_steps: Option<Array>,
 }
@@ -37,13 +37,13 @@ pub struct Step {
 pub struct Path {
   pub dirs: Option<Array>,
 
-  pub arch: Option<PathPlatform>,
-  pub mac: Option<PathPlatform>,
-  pub windows: Option<PathPlatform>,
+  pub arch: Option<PathBase>,
+  pub mac: Option<PathBase>,
+  pub windows: Option<PathBase>,
 }
 
 #[derive(Deserialize)]
-pub struct PathPlatform {
+pub struct PathBase {
   pub dirs: Option<Array>,
 }
 

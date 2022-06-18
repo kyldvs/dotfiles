@@ -4,8 +4,8 @@ use std::cmp::max;
 use colored::Colorize;
 use toml::Value;
 
+use crate::config::{Config, Path, PathBase, Step};
 use crate::out::out;
-use crate::state::config::{Config, Path, PathPlatform, Step};
 use crate::utils::platform;
 
 fn get_max_len(items: Iter<&String>) -> usize {
@@ -18,9 +18,9 @@ fn get_path_dirs(config: &Config) -> Vec<String> {
   let path: Option<&Path> = step.and_then(|x| x.path.as_ref());
 
   // This is awful, what is the idiomatic way to "Chain" options?
-  let mac: Option<&PathPlatform> = path.and_then(|x| x.mac.as_ref());
-  let arch: Option<&PathPlatform> = path.and_then(|x| x.arch.as_ref());
-  let windows: Option<&PathPlatform> = path.and_then(|x| x.windows.as_ref());
+  let mac: Option<&PathBase> = path.and_then(|x| x.mac.as_ref());
+  let arch: Option<&PathBase> = path.and_then(|x| x.arch.as_ref());
+  let windows: Option<&PathBase> = path.and_then(|x| x.windows.as_ref());
   let platform = if platform::is_mac() {
     mac
   } else if platform::is_arch_linux() {

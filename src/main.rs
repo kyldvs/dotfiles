@@ -20,9 +20,9 @@ fn main() -> Result<()> {
   let config_rel: PathBuf =
     [".config", "dotfiles", "config.toml"].iter().collect();
   let config_default: PathBuf = [home_dir, config_rel].iter().collect();
-  let config = args.config.unwrap_or(config_default);
+  let config_path = args.config.unwrap_or(config_default);
 
-  dotfiles::run(config);
+  dotfiles::run(config_path);
 
   Ok(())
 }

@@ -52,14 +52,14 @@ Windows installer of things.
 ```bash
 $ dotfiles
 Reading config:
-  [x] ~/.config/dotfiles/config.toml ... done
+  ~/.config/dotfiles/config.toml ... done
 Running steps:
-  [x] welcome ....... done
-  [x] path .......... done
-  [.] fonts ......... needs user input
-  [ ] settings ......
-  [ ] commands ......
-  [ ] programs ......
+  [1/6] welcome ....... done
+  [2/6] path .......... done
+  [3/6] fonts ......... needs user input
+  [4/6] settings ......
+  [5/6] commands ......
+  [6/6] programs ......
 Step fonts:
   Install fonts using `brew`? [Y/n]:
 ```
