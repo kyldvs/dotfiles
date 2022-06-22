@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use super::{Fonts, Step};
 use crate::config::Config;
 use crate::terminal::Terminal;
@@ -23,7 +25,7 @@ impl Step for Fonts {
     String::from("fonts")
   }
 
-  fn run(&self, t: &mut Terminal, c: &Config) {
+  fn run(&self, t: &mut Terminal, _c: &Config) {
     let name = self.get_name();
     let status_line = t.append(format!("  [ ] {}", name));
     t.append(format!("    not yet implemented"));

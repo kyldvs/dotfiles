@@ -1,6 +1,5 @@
 mod config;
 mod emoji;
-mod out;
 mod step;
 mod terminal;
 mod utils;
@@ -9,27 +8,15 @@ use std::path::PathBuf;
 use std::thread;
 use std::time::Duration;
 
-use colored::Colorize;
-use out::out;
-use step::Step;
 use terminal::Terminal;
 use termion::color;
-use utils::command;
 
 fn _check_common_commands() {
   let commands = [
     "sudo", "exa", "htop", "git", "hg", "cargo", "rustup", "fd", "ripgrep",
     "vim", "nvim", "nano", "tmux", "nvm",
   ];
-
-  // Should use get_max_len, see path.rs.
-  let max_len = 20;
-
-  for command in commands {
-    let exists = command::has(command);
-    let result = if exists { "Good".green() } else { "Missing".red() };
-    out(2, format!("{:max_len$}  {}", command, result));
-  }
+  let _ = commands;
 }
 
 pub fn run(path: PathBuf) {
@@ -53,10 +40,7 @@ pub fn run(path: PathBuf) {
   ));
 
   let config = config::parse(path);
-
-  let steps: Vec<Box<dyn Step>> =
-    vec![Box::new(step::Path::new()), Box::new(step::Fonts::new())];
-
+  let steps = step::get_steps();
   for step in steps {
     thread::sleep(frame);
     step.run(&mut t, &config);

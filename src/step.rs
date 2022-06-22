@@ -1,5 +1,5 @@
-pub mod fonts;
-pub mod path;
+mod fonts;
+mod path;
 
 use crate::config::Config;
 use crate::terminal::Terminal;
@@ -14,3 +14,7 @@ pub struct Path;
 
 /// Check that correct fonts are installed.
 pub struct Fonts;
+
+pub fn get_steps() -> Vec<Box<dyn Step>> {
+  vec![Box::new(Path::new()), Box::new(Fonts::new())]
+}
