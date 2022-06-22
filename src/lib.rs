@@ -8,6 +8,7 @@ use std::path::PathBuf;
 use std::thread;
 use std::time::Duration;
 
+use config::Config;
 use terminal::Terminal;
 use termion::color;
 
@@ -39,7 +40,7 @@ pub fn run(path: PathBuf) {
     color::Fg(color::Reset)
   ));
 
-  let config = config::parse(path);
+  let config = Config::from_path(path);
   let steps = step::get_steps();
   for step in steps {
     thread::sleep(frame);
