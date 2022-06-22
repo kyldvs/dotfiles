@@ -1,28 +1,16 @@
+pub mod fonts;
+pub mod path;
+
 use crate::config::Config;
 use crate::terminal::Terminal;
 
-pub trait Step {
+pub trait Step: Sync {
   fn get_name(&self) -> String;
   fn run(&self, t: &mut Terminal, c: &Config);
 }
 
-// Check $PATH variable
-
+/// Check $PATH variable contains appropriate directories.
 pub struct Path;
 
-impl Path {
-  pub fn new() -> Path {
-    Path
-  }
-}
-
-impl Step for Path {
-  fn get_name(&self) -> String {
-    String::from("path")
-  }
-
-  fn run(&self, t: &mut Terminal, c: &Config) {
-    let name = self.get_name();
-    let _ = t.append(format!("  [ ] {}", name));
-  }
-}
+/// Check that correct fonts are installed.
+pub struct Fonts;

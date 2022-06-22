@@ -2,7 +2,6 @@ mod config;
 mod emoji;
 mod out;
 mod step;
-mod steps;
 mod terminal;
 mod utils;
 
@@ -11,9 +10,8 @@ use std::thread;
 use std::time::Duration;
 
 use colored::Colorize;
-use config::Config;
 use out::out;
-use step::{Path, Step};
+use step::Step;
 use terminal::Terminal;
 use termion::color;
 use utils::command;
@@ -34,22 +32,6 @@ fn _check_common_commands() {
   }
 }
 
-fn welcome(term: &mut Terminal) {
-  term.append(format!("  [ ] welcome"));
-}
-
-fn check_path(term: &mut Terminal) {
-  term.append(format!("  [ ] check_path"));
-}
-
-fn fonts(term: &mut Terminal) {
-  term.append(format!("  [ ] fonts"));
-}
-
-fn settings(term: &mut Terminal) {
-  term.append(format!("  [ ] settings"));
-}
-
 pub fn run(path: PathBuf) {
   // tui::activate(path);
 
@@ -65,25 +47,16 @@ pub fn run(path: PathBuf) {
   t.append(format!("  {}", path.display()));
 
   t.append(format!(
-    "{}Running steps:{}",
-    color::Fg(color::Blue),
-    color::Fg(color::Reset)
-  ));
-
-  let steps = [welcome, check_path, fonts, settings];
-  for step in steps {
-    thread::sleep(frame);
-    step(&mut t);
-  }
-
-  t.append(format!(
     "{}Running structured steps:{}",
     color::Fg(color::Blue),
     color::Fg(color::Reset)
   ));
 
   let config = config::parse(path);
-  let steps = [Path::new()];
+
+  let steps: Vec<Box<dyn Step>> =
+    vec![Box::new(step::Path::new()), Box::new(step::Fonts::new())];
+
   for step in steps {
     thread::sleep(frame);
     step.run(&mut t, &config);
