@@ -48,6 +48,11 @@ dirs = [
   "/opt/homebrew/bin",
 ]
 
+[step.fonts]
+fonts = [
+  "Fira Code",
+]
+
 [step.settings.mac]
 finder_show_extensions = true
 finder_show_hidden_files = true

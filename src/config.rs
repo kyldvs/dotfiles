@@ -33,6 +33,7 @@ struct ControlBase {
 #[derive(Deserialize)]
 struct Step {
   path: Option<Path>,
+  fonts: Option<Fonts>,
 }
 
 #[derive(Deserialize)]
@@ -47,6 +48,11 @@ struct Path {
 #[derive(Deserialize)]
 struct PathBase {
   dirs: Option<Array>,
+}
+
+#[derive(Deserialize)]
+struct Fonts {
+  fonts: Option<Array>,
 }
 
 // Boilerplate for all the platforms.
@@ -85,34 +91,12 @@ impl Platformed<PathBase> for Path {
 
 impl Path {
   fn dirs(&self) -> Vec<String> {
-    let mut result: Vec<String> = vec![];
-
-    match &self.dirs {
-      | None => (),
-      | Some(dirs) => {
-        for dir in dirs {
-          if dir.is_str() {
-            result.push(String::from(dir.as_str().unwrap()));
-          }
-        }
-      },
+    let main = to_string_vec(&self.dirs);
+    let platformed = match &self.get_platformed() {
+      | None => vec![],
+      | Some(base) => to_string_vec(&base.dirs),
     };
-
-    match &self.get_platformed() {
-      | None => (),
-      | Some(base) => match &base.dirs {
-        | None => (),
-        | Some(dirs) => {
-          for dir in dirs {
-            if dir.is_str() {
-              result.push(String::from(dir.as_str().unwrap()));
-            }
-          }
-        },
-      },
-    };
-
-    result
+    vec![main, platformed].concat()
   }
 }
 
@@ -141,5 +125,38 @@ impl Config {
       },
     };
     return dirs;
+  }
+
+  pub fn get_fonts(&self) -> Vec<String> {
+    let empty = vec![];
+    let fonts = match &self.step {
+      | None => empty,
+      | Some(step) => match &step.fonts {
+        | None => empty,
+        | Some(fonts) => to_string_vec(&fonts.fonts),
+      },
+    };
+    return fonts;
+  }
+}
+
+// Some utils.
+
+fn to_string_vec(value: &Option<Array>) -> Vec<String> {
+  let empty = vec![];
+  match &value {
+    | None => empty,
+    | Some(value) => {
+      let mut result = vec![];
+      for x in value {
+        if x.is_str() {
+          // Don't use ".to_string()", it will add extra double quotes.
+          let s = x.as_str().unwrap();
+          let s = String::from(s);
+          result.push(s);
+        }
+      }
+      result
+    },
   }
 }
