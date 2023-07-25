@@ -18,7 +18,7 @@ pub fn all_files_recursive<P: AsRef<Path>>(path: P) -> Vec<PathBuf> {
   for entry in glob::glob(glob_str).unwrap() {
     v.push(entry.unwrap());
   }
-  return v;
+  v
 }
 
 pub fn expand_tilde<P: AsRef<Path>>(path_user_input: P) -> Option<PathBuf> {

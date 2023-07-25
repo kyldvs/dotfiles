@@ -96,7 +96,7 @@ impl Path {
       | None => vec![],
       | Some(base) => to_string_vec(&base.dirs),
     };
-    vec![main, platformed].concat()
+    [main, platformed].concat()
   }
 }
 
@@ -117,26 +117,26 @@ impl Config {
 
   pub fn get_path_dirs(&self) -> Vec<String> {
     let empty = vec![];
-    let dirs = match &self.step {
+
+    match &self.step {
       | None => empty,
       | Some(step) => match &step.path {
         | None => empty,
         | Some(path) => path.dirs(),
       },
-    };
-    return dirs;
+    }
   }
 
   pub fn get_fonts(&self) -> Vec<String> {
     let empty = vec![];
-    let fonts = match &self.step {
+
+    match &self.step {
       | None => empty,
       | Some(step) => match &step.fonts {
         | None => empty,
         | Some(fonts) => to_string_vec(&fonts.fonts),
       },
-    };
-    return fonts;
+    }
   }
 }
 

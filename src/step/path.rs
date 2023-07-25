@@ -24,7 +24,7 @@ impl Step for Path {
 
     // Try to get the path environment variable. Report any errors.
     let path = std::env::var("PATH");
-    if let Err(_) = path {
+    if path.is_err() {
       t.append("    > Error getting $PATH, maybe it's not set?");
       t.update(status_line, format!("  [x] {}", name));
       return;
@@ -34,7 +34,7 @@ impl Step for Path {
 
     // Already handled error, this should be safe.
     let parts = path.unwrap();
-    let parts = parts.split(":");
+    let parts = parts.split(':');
     for part in parts {
       path_parts.insert(part);
     }
@@ -63,7 +63,7 @@ impl Step for Path {
       expected_len
     );
 
-    let colored_overview = if missing.len() == 0 {
+    let colored_overview = if missing.is_empty() {
       format!(
         "{}{}{}",
         termion::color::Fg(termion::color::Green),

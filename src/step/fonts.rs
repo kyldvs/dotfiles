@@ -9,7 +9,7 @@ use crate::utils::path::all_files_recursive;
 use crate::utils::platform;
 
 fn get_font_dirs() -> Vec<String> {
-  let dirs = if platform::is_mac() {
+  if platform::is_mac() {
     vec![
       String::from("~/Library/Fonts"),
       String::from("/Library/Fonts"),
@@ -18,8 +18,7 @@ fn get_font_dirs() -> Vec<String> {
     ]
   } else {
     vec![]
-  };
-  dirs
+  }
 }
 
 impl Fonts {
@@ -41,7 +40,7 @@ impl Step for Fonts {
     for dir in get_font_dirs() {
       for file in all_files_recursive(dir) {
         // TODO: Nicer way to get font name from path.
-        let name = format!("{}", file.file_name().unwrap().to_str().unwrap());
+        let name = file.file_name().unwrap().to_str().unwrap().to_string();
         installed_fonts.insert(name);
       }
     }
@@ -52,7 +51,7 @@ impl Step for Fonts {
           return false;
         }
       }
-      return true;
+      true
     };
 
     let mut good = 0;
@@ -62,7 +61,7 @@ impl Step for Fonts {
       if font == "Fira Code" {
         // Variable font install. Includes all of the other ones except retina.
         if check(vec!["FiraCode-VF.ttf", "FiraCode-Retina.ttf"]) {
-          good = good + 1;
+          good += 1;
           continue;
         }
 
@@ -75,13 +74,13 @@ impl Step for Fonts {
           // Is this one necessary in normal install?
           "FiraCode-Retina.ttf",
         ]) {
-          good = good + 1;
+          good += 1;
           continue;
         }
       }
 
       if installed_fonts.contains(&font) {
-        good = good + 1;
+        good += 1;
         continue;
       }
 
