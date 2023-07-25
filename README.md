@@ -1,5 +1,7 @@
 # dotfiles
 
+[![CI Badge](https://github.com/kyldvs/dotfiles/actions/workflows/ci.yml/badge.svg)](https://github.com/kyldvs/dotfiles/actions/workflows/ci.yml)
+
 Some Dotfiles and a tool to get everyting setup.
 
 ## Install Tools
