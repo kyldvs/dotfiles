@@ -103,7 +103,9 @@ impl Path {
 // Overall Implementation.
 
 impl Config {
-  pub fn from_string(s: &String) -> Config {
+  // TODO: Why did I have this?
+  // pub fn from_string(s: &String) -> Config {
+  pub fn from_string(s: &str) -> Config {
     // TODO: Error handline when parsing toml.
     let config: Config = toml::from_str(s).unwrap();
     config
