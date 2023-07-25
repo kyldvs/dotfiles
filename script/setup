@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Bash Strict Mode: http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail
+IFS=$'\n\t'
+
+# This will be the directory of this script.
+DIR="$(cd "$(dirname "$0")" && pwd)"
+
+echo "Hello World! No setup implemented yet."
