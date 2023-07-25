@@ -48,7 +48,6 @@ Windows installer of things.
 
 # TUI Design notes
 
-
 ```bash
 $ dotfiles
 Reading config:
