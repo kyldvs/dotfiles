@@ -1,3 +1,3 @@
 module.exports = {
-  "*.rs": "cargo fmt",
+  "*.rs": "rustfmt",
 };
