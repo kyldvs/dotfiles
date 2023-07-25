@@ -1,6 +1,7 @@
 {
   "name": "dotfiles",
   "version": "0.0.0",
+  "packageManager": "pnpm@8.6.10",
   "scripts": {
     "prepare": "husky install",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,yml,yaml,md}\""
