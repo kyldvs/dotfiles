@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+# Clippy action needs the write permission.
+permissions:
+  checks: write
+
 jobs:
   format:
     runs-on: ubuntu-latest
