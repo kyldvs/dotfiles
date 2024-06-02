@@ -1,0 +1,16 @@
+{
+  "name": "@kyldvs/dotfiles",
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.1.4",
+  "scripts": {
+    "help": "echo 'Scripts are in justfiles, run `just` for a list of tasks.'",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.0"
+  }
+}

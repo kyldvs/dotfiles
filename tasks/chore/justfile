@@ -1,0 +1,21 @@
+# Print help.
+help:
+  @just chore -l
+
+# Update pnpm to the latest version using corepack.
+update-pnpm:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  corepack prepare pnpm@latest --activate
+
+  # Have to run pnpm -v from a higher directory because otherwise it will just
+  # report the already specified version in package.json.
+  pushd ~ > /dev/null
+  PNPM_VERSION=`pnpm -v`
+  popd > /dev/null
+
+  echo "Updating to pnpm@${PNPM_VERSION}"
+  sed \
+    -i '' \
+    -e "s/\(\"packageManager\": \"pnpm@\)[^\",]*\"/\1$PNPM_VERSION\"/g" \
+    "package.json"

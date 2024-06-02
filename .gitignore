@@ -1,0 +1,21 @@
+# misc
+.DS_Store
+*.pem
+
+# env files
+.env*
+!.env.example
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# debug
+npm-debug.log*
+
+# use pnpm, not npm
+.package-lock.json
+
+# vscode settings
+.vscode

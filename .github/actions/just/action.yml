@@ -1,0 +1,15 @@
+name: Set up just
+description: Set up just
+
+inputs:
+  github-token:
+    required: true
+    description: "pass secrets.GITHUB_TOKEN"
+
+runs:
+  using: composite
+  steps:
+    - name: Install just
+      uses: extractions/setup-just@v1
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}

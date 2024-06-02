@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: ./.github/actions/node
+
+      - name: Setup just
+        uses: ./.github/actions/just
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install
+        run: just ci install
+
+      - name: Build
+        run: just build
+
+      - name: Test
+        run: just test
+
+      - name: Check for uncommitted changes
+        run: git diff --exit-code
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: ./.github/actions/node
+
+      - name: Setup just
+        uses: ./.github/actions/just
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install
+        run: just ci install
+
+      - name: Format
+        run: just ci format

@@ -1,0 +1,9 @@
+# Print help.
+help:
+  @just ci -l
+
+install:
+  pnpm install --frozen-lockfile
+
+format:
+  pnpm exec prettier --check "**/*.{js,jsx,ts,tsx,json,yml,yaml,md,mdx}"

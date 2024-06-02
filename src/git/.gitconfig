@@ -1,0 +1,25 @@
+[user]
+	name = Kyle
+	email = github@kyle.dev
+
+[push]
+	default = current
+
+[pull]
+  ff = true
+
+[merge]
+  ff = true
+  conflictstyle = zdiff3
+
+[init]
+  defaultBranch = main
+
+[diff]
+  algorithm = histogram
+
+[log]
+  date = iso
+
+[core]
+  autocrlf = false
