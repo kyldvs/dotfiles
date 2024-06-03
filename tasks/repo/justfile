@@ -43,3 +43,8 @@ update-pnpm:
     -i '' \
     -e "s/\(\"packageManager\": \"pnpm@\)[^\",]*\"/\1$PNPM_VERSION\"/g" \
     "package.json"
+
+# Install pnpm after switch node versions with nvm.
+refresh-pnpm:
+  npm install -g corepack
+  corepack prepare pnpm@latest --activate
