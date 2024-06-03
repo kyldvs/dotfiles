@@ -2,63 +2,50 @@
 mosh
 tmux
 
-# Bash and shell-related tools.
+# Shell related tools.
 bash
 bash-completion
 shellcheck
+zsh-autosuggestions
+zsh-syntax-highlighting
 
-# Enhanced command-line utilities.
+# Command line tools.
 bat
+brew-cask-completion
+cowsay
 fd
 fzf
+jq
+lazygit
 ripgrep
+starship
 the_silver_searcher
+tldr
+zoxide
 
 # System and resource monitoring.
 htop
 btop
 
-# Terminal enhancements.
-cowsay
-starship
-
-# Version management.
+# Languages.
 rust
 python@3.10
 
-# Scripting and task automation.
+# Command runners.
+cmake
 just
-
-# Version control and Git tools.
-lazygit
 
 # Text editors.
 neovim
 
-# File management.
+# Symlink management.
 stow
-
-# Search tools.
-zoxide
 
 # Image processing.
 imagemagick
 
-# Documentation tools.
-brew-cask-completion
-
-# Similar to `man`, but with simple explanations.
-tldr
-
-# Command-line JSON processor.
-jq
-
-# PostgreSQL.
+# Databases.
 postgresql@16
 
-# DevOps and cloud infrastructure.
+# Infrastructure as code.
 opentofu
-
-# Zsh plugins.
-zsh-autosuggestions
-zsh-syntax-highlighting
