@@ -26,13 +26,13 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install
-        run: just ci install
+        run: just repo install-ci
 
       - name: Build
-        run: just build
+        run: just repo build
 
       - name: Test
-        run: just test
+        run: just repo test
 
       - name: Check for uncommitted changes
         run: git diff --exit-code
@@ -52,7 +52,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install
-        run: just ci install
+        run: just repo install-ci
 
       - name: Format
-        run: just ci format
+        run: just repo format-ci

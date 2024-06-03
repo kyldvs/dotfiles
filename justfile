@@ -17,31 +17,47 @@ help:
 
 # See: https://github.com/casey/just/issues/208#issuecomment-453529888
 
-# Common chores that need to be done.
-chore +args="help":
-  @just -d `pwd` -f "tasks/chore/justfile" {{ args }}
-
-# Tasks particular to a CI environment.
-ci +args="help":
-  @just -d `pwd` -f "tasks/ci/justfile" {{ args }}
-
-# =============================================================================
-# Repo management.
-# =============================================================================
-
-# Run this first.
+# Tasks for the repo itself, not dotfile management.
 [group("repo")]
+repo +args="help":
+  @just -d `pwd` -f "tasks/repo/justfile" {{ args }}
+
+# =============================================================================
+# Dotfiles management.
+# =============================================================================
+
+home_dir := env_var('HOME')
+
+@_check_program name:
+  command -v {{name}} >/dev/null 2>&1 || { echo >&2 "{{name}} is required but it's not installed. Aborting."; exit 1; }
+
+@_check_install:
+  just _check_program cat
+  just _check_program grep
+  just _check_program brew
+  just _check_program xargs
+
+@_check_link:
+  just _check_install
+  just _check_program ls
+  just _check_program stow
+
+# Install recipes using brew.
 install:
-  pnpm install
+  @just _check_install
+  cat ./src/homebrew/recipes.txt | grep -v "^#" | grep -v "^[[:space:]]*$" | xargs brew install
 
-[group("repo")]
-build:
-  echo "There is no build command"
+# Links dotfiles into home directory.
+link:
+  ls -A links | grep -v "^\.\+$" | xargs stow -d ./links -t "{{home_dir}}"
 
-[group("repo")]
-test:
-  echo "There is no test command"
+# [confirm("Symlink contents of ./links in home directory? (y/N)")]
+# Links dotfiles into test directory (./links-test).
+[group("test")]
+link-test:
+  ls -A links | grep -v "^\.\+$" | xargs stow -d ./links -t ./links-test
 
-[group("repo")]
-format:
-  pnpm exec prettier --write "**/*.{js,jsx,ts,tsx,json,yml,yaml,md,mdx}"
+# Export installed brew commands. Useful when leaving a system.
+[group("leaving")]
+@export-brew:
+  brew leaves

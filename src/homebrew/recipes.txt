@@ -1,0 +1,64 @@
+# Terminal multiplexors.
+mosh
+tmux
+
+# Bash and shell-related tools.
+bash
+bash-completion
+shellcheck
+
+# Enhanced command-line utilities.
+bat
+fd
+fzf
+ripgrep
+the_silver_searcher
+
+# System and resource monitoring.
+htop
+btop
+
+# Terminal enhancements.
+cowsay
+starship
+
+# Version management.
+rust
+python@3.10
+
+# Scripting and task automation.
+just
+
+# Version control and Git tools.
+lazygit
+
+# Text editors.
+neovim
+
+# File management.
+stow
+
+# Search tools.
+zoxide
+
+# Image processing.
+imagemagick
+
+# Documentation tools.
+brew-cask-completion
+
+# Similar to `man`, but with simple explanations.
+tldr
+
+# Command-line JSON processor.
+jq
+
+# PostgreSQL.
+postgresql@16
+
+# DevOps and cloud infrastructure.
+opentofu
+
+# Zsh plugins.
+zsh-autosuggestions
+zsh-syntax-highlighting

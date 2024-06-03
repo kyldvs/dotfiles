@@ -1,0 +1,45 @@
+# Repo commands are "hidden" over here
+
+# Print help.
+help:
+  @just repo -l
+
+install:
+  pnpm install
+
+install-ci:
+  pnpm install --frozen-lockfile
+
+format:
+  pnpm exec prettier --write "**/*.{js,jsx,ts,tsx,json,yml,yaml,md,mdx}"
+
+format-ci:
+  pnpm exec prettier --check "**/*.{js,jsx,ts,tsx,json,yml,yaml,md,mdx}"
+
+build:
+  echo "There is no build command"
+
+test:
+  echo "There is no test command"
+
+# =============================================================================
+# Chores
+# =============================================================================
+
+# Update pnpm to the latest version using corepack.
+update-pnpm:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  corepack prepare pnpm@latest --activate
+
+  # Have to run pnpm -v from a higher directory because otherwise it will just
+  # report the already specified version in package.json.
+  pushd ~ > /dev/null
+  PNPM_VERSION=`pnpm -v`
+  popd > /dev/null
+
+  echo "Updating to pnpm@${PNPM_VERSION}"
+  sed \
+    -i '' \
+    -e "s/\(\"packageManager\": \"pnpm@\)[^\",]*\"/\1$PNPM_VERSION\"/g" \
+    "package.json"
