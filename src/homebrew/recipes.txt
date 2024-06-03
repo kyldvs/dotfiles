@@ -24,12 +24,12 @@ tldr
 zoxide
 
 # System and resource monitoring.
-htop
 btop
+htop
 
 # Languages.
-rust
 python@3.10
+rust
 
 # Command runners.
 cmake
