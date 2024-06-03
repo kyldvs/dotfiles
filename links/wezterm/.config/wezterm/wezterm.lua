@@ -1,4 +1,14 @@
 local wezterm = require 'wezterm'
+local mux = wezterm.mux
+
+-- Kind of works to maximize the window, but it's slow on mac. Using the
+-- rectangle window manager to do this manually for now. For more discussion
+-- see: https://github.com/wez/wezterm/issues/3299
+-- wezterm.on("gui-startup", function(cmd)
+-- 	local tab, pane, window = mux.spawn_window(cmd or {})
+-- 	window:gui_window():maximize()
+-- end)
+
 return {
 	color_scheme = 'Catppuccin Mocha',
 	enable_tab_bar = false,
