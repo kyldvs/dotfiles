@@ -15,9 +15,9 @@ wezterm.on("gui-startup", function(cmd)
 end)
 
 return {
-	color_scheme = 'Catppuccin Mocha',
+  color_scheme = 'Material Darker (base16)',
 	enable_tab_bar = false,
-	font_size = 16.0,
+	font_size = 14.0,
 	font = wezterm.font('JetBrains Mono'),
   window_background_opacity = 1.0,
 	window_decorations = 'RESIZE',
