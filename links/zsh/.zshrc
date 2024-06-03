@@ -1,4 +1,15 @@
 # =============================================================================
+# Powerlevel10k instant prompt.
+# =============================================================================
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# =============================================================================
 # Homebrew (package manager).
 # =============================================================================
 
@@ -6,6 +17,8 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled.
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+PATH="/opt/homebrew/bin:$PATH"
 
 # =============================================================================
 # zinit (zsh plugin manager).
@@ -62,21 +75,11 @@ zinit cdreplay -q
 setopt NO_BEEP
 
 # =============================================================================
-# p10k (powerline).
+# Powerlevel10k (powerline).
 # =============================================================================
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f "~/.p10k.zsh" ]] || source "~/.p10k.zsh"
-
-# =============================================================================
-# nvm (nodejs version manager).
-# =============================================================================
-
-export NVM_DIR="$HOME/.nvm"
-# This loads nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-# This loads nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # =============================================================================
 # History.
@@ -115,7 +118,17 @@ alias tt="(tmux ls | grep -vx attached && tmux at) || tmux"
 # Source other zsh files.
 # =============================================================================
 
-[[ ! -f "~/.vcs.zsh" ]] || source "~/.vcs.zsh"
+[[ ! -f ~/.vcs.zsh ]] || source ~/.vcs.zsh
+
+# =============================================================================
+# nvm (nodejs version manager).
+# =============================================================================
+
+export NVM_DIR="$HOME/.nvm"
+# This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # =============================================================================
 # pnpm (nodejs package manager).
