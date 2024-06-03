@@ -113,6 +113,9 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Allows easily attaching to existing tmux session.
 alias tt="(tmux ls | grep -vx attached && tmux at) || tmux"
+alias cat="bat"
+alias ls="eza -la --icons --git"
+alias lst="eza -la --icons --git --tree --level 2"
 
 # =============================================================================
 # Source other zsh files.

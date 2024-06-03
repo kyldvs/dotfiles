@@ -13,6 +13,7 @@ zsh-syntax-highlighting
 bat
 brew-cask-completion
 cowsay
+eza
 fd
 fzf
 jq
