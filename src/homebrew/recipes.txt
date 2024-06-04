@@ -19,7 +19,6 @@ fzf
 jq
 lazygit
 ripgrep
-starship
 the_silver_searcher
 tldr
 zoxide
