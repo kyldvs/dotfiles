@@ -11,10 +11,10 @@ install-ci:
   pnpm install --frozen-lockfile
 
 format:
-  pnpm exec prettier --write "**/*.{js,jsx,ts,tsx,json,yml,yaml,md,mdx}"
+  pnpm exec prettier --write "**/*.{js,jsx,ts,tsx,json,yml,yaml,md,mdx,toml}"
 
 format-ci:
-  pnpm exec prettier --check "**/*.{js,jsx,ts,tsx,json,yml,yaml,md,mdx}"
+  pnpm exec prettier --check "**/*.{js,jsx,ts,tsx,json,yml,yaml,md,mdx,toml}"
 
 build:
   echo "There is no build command"

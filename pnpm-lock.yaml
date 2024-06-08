@@ -23,6 +23,9 @@ importers:
       prettier:
         specifier: ^3.0.0
         version: 3.3.0
+      prettier-plugin-toml:
+        specifier: ^2.0.1
+        version: 2.0.1(prettier@3.3.0)
 
 packages:
 
@@ -120,6 +123,12 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
+
+  '@taplo/core@0.1.1':
+    resolution: {integrity: sha512-BG/zLGf5wiNXGEVPvUAAX/4ilB3PwDUY2o0MV0y47mZbDZ9ad9UK/cIQsILat3bqbPJsALVbU6k3cskNZ3vAQg==}
+
+  '@taplo/lib@0.4.0-alpha.2':
+    resolution: {integrity: sha512-DV/Re3DPVY+BhBtLZ3dmP4mP6YMLSsgq9qGLXwOV38lvNF/fBlgvQswzlXmzCEefL/3q2eMoefZpOI/+GLuCNA==}
 
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -709,6 +718,12 @@ packages:
     engines: {node: '>=0.10'}
     hasBin: true
 
+  prettier-plugin-toml@2.0.1:
+    resolution: {integrity: sha512-99z1YOkViECHtXQjGIigd3talI/ybUI1zB3yniAwUrlWBXupNXThB1hM6bwSMUEj2/+tomTlMtT98F5t4s8IWA==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      prettier: ^3.0.3
+
   prettier@3.3.0:
     resolution: {integrity: sha512-J9odKxERhCQ10OC2yb93583f6UnYutOeiV5i0zEDS7UGTdUt0u+y8erxl3lBKvwo/JHyyoEdXjwp4dke9oyZ/g==}
     engines: {node: '>=14'}
@@ -1120,6 +1135,12 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  '@taplo/core@0.1.1': {}
+
+  '@taplo/lib@0.4.0-alpha.2':
+    dependencies:
+      '@taplo/core': 0.1.1
 
   '@tsconfig/node10@1.0.11': {}
 
@@ -1647,6 +1668,11 @@ snapshots:
   picomatch@2.3.1: {}
 
   pidtree@0.6.0: {}
+
+  prettier-plugin-toml@2.0.1(prettier@3.3.0):
+    dependencies:
+      '@taplo/lib': 0.4.0-alpha.2
+      prettier: 3.3.0
 
   prettier@3.3.0: {}
 

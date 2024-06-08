@@ -1,0 +1,120 @@
+# Available commands: https://nikitabobko.github.io/AeroSpace/commands
+# after-login-command = []
+# after-startup-command = []
+
+start-at-login = true
+
+# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+# enable-normalization-flatten-containers = true
+# enable-normalization-opposite-orientation-for-nested-containers = true
+
+# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
+accordion-padding = 0
+
+# Possible values: tiles|accordion
+# default-root-container-layout = 'tiles'
+
+# Possible values: horizontal|vertical|auto
+# default-root-container-orientation = 'auto'
+
+# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
+# key-mapping.preset = 'qwerty'
+
+# Gaps between windows (inner-*) and between monitor edges (outer-*).
+[gaps]
+inner.horizontal = 12
+inner.vertical = 12
+outer.left = 4
+outer.bottom = 6
+outer.top = 8
+outer.right = 4
+
+# See https://nikitabobko.github.io/AeroSpace/guide#exec-env-vars
+# [exec]
+# inherit-env-vars = true
+# [exec.env-vars]
+# PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
+
+[mode.main.binding]
+
+# Easily reload config.
+alt-shift-r = 'reload-config'
+
+# Easily switch to common apps.
+alt-enter = 'exec-and-forget open "/Applications/WezTerm.app"'
+alt-a = 'exec-and-forget open "/Applications/Arc.app"'
+alt-e = 'exec-and-forget open "/Applications/VS Code.app"'
+alt-o = 'exec-and-forget open "/Applications/Obsidian.app"'
+
+# Easily open new windows of common apps.
+alt-shift-enter = 'exec-and-forget open -n "/Applications/WezTerm.app"'
+
+# alt-j = 'focus left'
+# alt-k = 'focus down'
+# alt-l = 'focus up'
+# alt-semicolon = 'focus right'
+
+# alt-shift-j = 'move left'
+# alt-shift-k = 'move down'
+# alt-shift-l = 'move up'
+# alt-shift-semicolon = 'move right'
+
+# alt-f = 'fullscreen'
+# alt-s = 'layout v_accordion'               # 'layout stacking' in i3
+# alt-w = 'layout h_accordion'               # 'layout tabbed' in i3
+# alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+
+alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
+
+# Workspace Commands:
+alt-tab = 'workspace-back-and-forth'
+
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+
+# Mode Commands
+alt-r = 'mode resize'
+
+# alt-shift-semicolon = 'mode service'
+# [mode.service.binding]
+# esc = ['reload-config', 'mode main']
+# enter = ['reload-config', 'mode main']
+
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+enter = 'mode main'
+esc = 'mode main'
+
+# =============================================================================
+# Window rules.
+# =============================================================================
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+check-further-callbacks = true
+run = ['layout floating', 'move-node-to-workspace 2']
+
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+check-further-callbacks = true
+run = 'move-node-to-workspace 3'

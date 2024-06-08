@@ -70,12 +70,26 @@ link-test:
 # Install fonts.
 fonts:
   # Do you even need --cask?
-  brew install font-jetbrains-mono-nerd-font
-  # Why does this need sudo? Remove that...
-  brew install font-sf-pro
+  brew install --cask font-jetbrains-mono-nerd-font
+
+aero:
+  brew install --cask nikitabobko/tap/aerospace
+  # move windows by holding ctrl + cmd and dragging any part of the window
+  defaults write -g NSWindowShouldDragOnGesture YES
+  # disable window opening animation
+  defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 
 # Setup Sketchy bar.
 sketchybar:
   brew tap FelixKratz/formulae
   # TODO: Check "Displays have separate Spaces" setting.
   brew install sketchybar
+
+borders:
+  brew tap FelixKratz/formulae
+  brew install borders
+
+# Update xcode
+xcode:
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install

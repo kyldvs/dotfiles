@@ -7,4 +7,5 @@ module.exports = {
   trailingComma: "all",
   printWidth: 80,
   bracketSameLine: true,
+  plugins: ["prettier-plugin-toml"],
 };
