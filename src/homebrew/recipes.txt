@@ -18,6 +18,7 @@ fd
 fzf
 jq
 lazygit
+neofetch
 ripgrep
 the_silver_searcher
 tldr
@@ -49,3 +50,6 @@ postgresql@16
 
 # Infrastructure as code.
 opentofu
+
+# Customize Apple Bar
+jordanbaird-ice
