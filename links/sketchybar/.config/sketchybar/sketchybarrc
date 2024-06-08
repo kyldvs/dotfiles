@@ -6,7 +6,8 @@ source "$HOME/.config/sketchybar/icons.sh" # Loads all defined icons
 ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
 
-FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
+# FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
+FONT="JetBrains Mono" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 # SPACE_CLICK_SCRIPT="yabai -m space --focus \$SID 2>/dev/null" # The script that is run for clicking on space components
 SPACE_CLICK_SCRIPT="echo '' 2>/dev/null" # The script that is run for clicking on space components
 
@@ -59,6 +60,7 @@ source "$ITEM_DIR/front_app.sh"
 
 # Right
 # source "$ITEM_DIR/github.sh"
+
 source "$ITEM_DIR/mail.sh"
 source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/cpu.sh"

@@ -18,7 +18,7 @@ return {
   color_scheme = 'Material Darker (base16)',
 	enable_tab_bar = false,
 	font_size = 14.0,
-	font = wezterm.font('JetBrains Mono'),
+	font = wezterm.font('JetBrainsMono Nerd Font'),
   window_background_opacity = 1.0,
 	window_decorations = 'RESIZE',
   mouse_bindings = {

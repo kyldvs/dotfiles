@@ -67,18 +67,15 @@ link-test:
 # Manual scripts while getting things working. Should move to better places.
 # =============================================================================
 
-tap:
-  # No longer typically necessary.
-  # brew tap homebrew/cask
-  # For sketchybar.
-  brew tap FelixKratz/formulae
-
-# Install nerd font.
+# Install fonts.
 fonts:
   # Do you even need --cask?
-  brew install --cask font-jetbrains-mono
+  brew install font-jetbrains-mono-nerd-font
+  # Why does this need sudo? Remove that...
+  brew install font-sf-pro
 
 # Setup Sketchy bar.
-bar:
+sketchybar:
+  brew tap FelixKratz/formulae
   # TODO: Check "Displays have separate Spaces" setting.
   brew install sketchybar
