@@ -3,6 +3,7 @@
 set fallback := true
 set shell := ["bash", "-uc"]
 set windows-shell := ["sh", "-uc"]
+set ignore-comments
 
 _default:
   @just --list
@@ -61,3 +62,23 @@ link-test:
 [group("leaving")]
 @export-brew:
   brew leaves
+
+# =============================================================================
+# Manual scripts while getting things working. Should move to better places.
+# =============================================================================
+
+tap:
+  # No longer typically necessary.
+  # brew tap homebrew/cask
+  # For sketchybar.
+  brew tap FelixKratz/formulae
+
+# Install nerd font.
+fonts:
+  # Do you even need --cask?
+  brew install --cask font-jetbrains-mono
+
+# Setup Sketchy bar.
+bar:
+  # TODO: Check "Displays have separate Spaces" setting.
+  brew install sketchybar
