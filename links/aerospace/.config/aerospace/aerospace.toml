@@ -1,26 +1,15 @@
-# Available commands: https://nikitabobko.github.io/AeroSpace/commands
-# after-login-command = []
-# after-startup-command = []
+# =============================================================================
+# Startup
+# =============================================================================
 
 start-at-login = true
 
-# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-# enable-normalization-flatten-containers = true
-# enable-normalization-opposite-orientation-for-nested-containers = true
+# =============================================================================
+# Styling
+# =============================================================================
 
-# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 accordion-padding = 0
 
-# Possible values: tiles|accordion
-# default-root-container-layout = 'tiles'
-
-# Possible values: horizontal|vertical|auto
-# default-root-container-orientation = 'auto'
-
-# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
-# key-mapping.preset = 'qwerty'
-
-# Gaps between windows (inner-*) and between monitor edges (outer-*).
 [gaps]
 inner.horizontal = 12
 inner.vertical = 12
@@ -29,44 +18,33 @@ outer.bottom = 6
 outer.top = 8
 outer.right = 4
 
-# See https://nikitabobko.github.io/AeroSpace/guide#exec-env-vars
-# [exec]
-# inherit-env-vars = true
-# [exec.env-vars]
-# PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
+# =============================================================================
+# Keybindings (main)
+# =============================================================================
 
 [mode.main.binding]
 
 # Easily reload config.
 alt-shift-r = 'reload-config'
 
-# Easily switch to common apps.
+# =============================================================================
+# Common Apps
+# =============================================================================
+
+# Switch to apps.
 alt-enter = 'exec-and-forget open "/Applications/WezTerm.app"'
 alt-a = 'exec-and-forget open "/Applications/Arc.app"'
 alt-e = 'exec-and-forget open "/Applications/VS Code.app"'
 alt-o = 'exec-and-forget open "/Applications/Obsidian.app"'
+alt-m = 'exec-and-forget open "/Applications/Superhuman.app"'
 
-# Easily open new windows of common apps.
+# Open new windows for apps.
 alt-shift-enter = 'exec-and-forget open -n "/Applications/WezTerm.app"'
 
-# alt-j = 'focus left'
-# alt-k = 'focus down'
-# alt-l = 'focus up'
-# alt-semicolon = 'focus right'
+# =============================================================================
+# Workspaces
+# =============================================================================
 
-# alt-shift-j = 'move left'
-# alt-shift-k = 'move down'
-# alt-shift-l = 'move up'
-# alt-shift-semicolon = 'move right'
-
-# alt-f = 'fullscreen'
-# alt-s = 'layout v_accordion'               # 'layout stacking' in i3
-# alt-w = 'layout h_accordion'               # 'layout tabbed' in i3
-# alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
-
-alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
-
-# Workspace Commands:
 alt-tab = 'workspace-back-and-forth'
 
 alt-1 = 'workspace 1'
@@ -89,32 +67,48 @@ alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 
-# Mode Commands
-alt-r = 'mode resize'
+# =============================================================================
+# Layouts / Movement / Focus.
+# =============================================================================
 
-# alt-shift-semicolon = 'mode service'
-# [mode.service.binding]
-# esc = ['reload-config', 'mode main']
-# enter = ['reload-config', 'mode main']
+# alt-j = 'focus left'
+# alt-k = 'focus down'
+# alt-l = 'focus up'
+# alt-semicolon = 'focus right'
 
-[mode.resize.binding]
-h = 'resize width -50'
-j = 'resize height +50'
-k = 'resize height -50'
-l = 'resize width +50'
-enter = 'mode main'
-esc = 'mode main'
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+alt-shift-f = 'fullscreen'
+
+# alt-s = 'layout v_accordion'               # 'layout stacking' in i3
+# alt-w = 'layout h_accordion'               # 'layout tabbed' in i3
+# alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+
+# alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 
 # =============================================================================
-# Window rules.
+# Resizing / Misc
 # =============================================================================
+
+alt-shift-minus = 'resize smart -50'
+alt-shift-equal = 'resize smart +50'
+
+# =============================================================================
+# Window rules
+# =============================================================================
+
+# Default everything to tiles on start.
+[[on-window-detected]]
+run = 'layout tiling'
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-check-further-callbacks = true
+check-further-callbacks = false
 run = ['layout floating', 'move-node-to-workspace 2']
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
-check-further-callbacks = true
+check-further-callbacks = false
 run = 'move-node-to-workspace 3'
