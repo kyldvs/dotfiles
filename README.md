@@ -4,7 +4,7 @@
 [![license badge](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
 <p align="center">
-  <img src="docs/image/2024-06-09-screenshot.png" />
+  <img src="docs/images/2024-06-09-screenshot.png" />
 </p>
 
 # Overview
