@@ -3,13 +3,13 @@
 [![ci badge](https://github.com/kyldvs/dotfiles/actions/workflows/ci.yml/badge.svg)](https://github.com/kyldvs/dotfiles/actions)
 [![license badge](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
-<p align="center">
-  <img src="docs/images/2024-06-09-screenshot.png" />
-</p>
-
 # Overview
 
 These are the dotfiles for my mac (and eventually other systems).
+
+<p align="center">
+  <img src="docs/images/2024-06-09-screenshot.png" />
+</p>
 
 ## Principles
 
