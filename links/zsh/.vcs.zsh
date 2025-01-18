@@ -147,7 +147,7 @@ function sl() {
   case $(vcs_kind) in
     git)
       git log \
-      -20 \
+      -10 \
       --graph \
       --abbrev-commit \
       --decorate \

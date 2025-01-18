@@ -34,9 +34,10 @@ alt-shift-r = 'reload-config'
 # Switch to apps.
 alt-enter = 'exec-and-forget open "/Applications/WezTerm.app"'
 alt-a = 'exec-and-forget open "/Applications/Arc.app"'
-alt-e = 'exec-and-forget open "/Applications/VS Code.app"'
+alt-e = 'exec-and-forget open "/Applications/Zed.app"'
 alt-o = 'exec-and-forget open "/Applications/Obsidian.app"'
 alt-m = 'exec-and-forget open "/Applications/Superhuman.app"'
+alt-s = 'exec-and-forget open "/Applications/Slack.app"'
 
 # Open new windows for apps.
 alt-shift-enter = 'exec-and-forget open -n "/Applications/WezTerm.app"'
@@ -76,17 +77,23 @@ alt-shift-9 = 'move-node-to-workspace 9'
 # alt-l = 'focus up'
 # alt-semicolon = 'focus right'
 
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
+# WASD for directions are more comfortable for me than HJKL in combination with
+# modifier keys.
+alt-shift-a = 'move left'
+alt-shift-s = 'move down'
+alt-shift-w = 'move up'
+alt-shift-d = 'move right'
 alt-shift-f = 'fullscreen'
 
 # alt-s = 'layout v_accordion'               # 'layout stacking' in i3
 # alt-w = 'layout h_accordion'               # 'layout tabbed' in i3
 # alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
 
-# alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
+alt-shift-comma = "layout tiling"
+alt-shift-period = 'layout accordion'
+alt-shift-slash = 'layout floating'
+
+alt-shift-esc = "flatten-workspace-tree"
 
 # =============================================================================
 # Resizing / Misc
@@ -101,7 +108,7 @@ alt-shift-equal = 'resize smart +50'
 
 # Default everything to tiles on start.
 [[on-window-detected]]
-run = 'layout tiling'
+run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
