@@ -192,10 +192,10 @@ function sll() {
   esac
 }
 
-# Go to a particular place in the repository.
+# Checkout a particular place in the repository.
 #
 # Passes all arguments to underlying command.
-function go() {
+function co() {
   case $(vcs_kind) in
     git)
       git checkout "$@"

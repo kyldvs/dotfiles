@@ -23,3 +23,6 @@
 
 [core]
   autocrlf = false
+
+[includeIf "gitdir:~/stoke/"]
+  path = ~/.config/git/stoke.gitconfig

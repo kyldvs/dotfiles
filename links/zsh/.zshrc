@@ -59,7 +59,7 @@ zinit light Aloxaf/fzf-tab
 # =============================================================================
 
 # Load & run completions.
-autoload -Uz compinit && compinit
+fpath+=~/.zfunc; autoload -Uz compinit && compinit
 
 # Make sure hidden folders and files can be completed (ones that start with .).
 _comp_options+=(globdots)
@@ -144,6 +144,14 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm endexport
+
+# =============================================================================
+# Path updates.
+# =============================================================================
+
+export PATH="/Users/kad/.codeium/windsurf/bin:$PATH"
+export PATH="/Users/kad/.local/bin:$PATH"
+export PATH="/Users/kad/go/bin:$PATH"
 
 # =============================================================================
 # Shell integrations.

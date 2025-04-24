@@ -1,0 +1,7 @@
+#compdef sd
+
+_sd_completion() {
+  eval $(env _TYPER_COMPLETE_ARGS="${words[1,$CURRENT]}" _SD_COMPLETE=complete_zsh sd)
+}
+
+compdef _sd_completion sd

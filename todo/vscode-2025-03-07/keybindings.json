@@ -1,0 +1,69 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "cmd+down",
+    "command": "-editor.action.inlineSuggest.acceptNextLine",
+    "when": "inlineSuggestionVisible && !editorReadonly"
+  },
+  {
+    "key": "cmd+right",
+    "command": "-editor.action.inlineSuggest.acceptNextWord",
+    "when": "inlineSuggestionVisible && !editorReadonly"
+  },
+  {
+    "key": "cmd+]",
+    "command": "-editor.action.indentLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+down",
+    "command": "-editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+up",
+    "command": "-editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+[",
+    "command": "-editor.action.outdentLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+\\",
+    "command": "workbench.files.action.showActiveFileInExplorer"
+  },
+  {
+    "key": "cmd+\\",
+    "command": "-workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "cmd+\\",
+    "command": "-workbench.action.splitEditor"
+  },
+  {
+    "key": "cmd+\\",
+    "command": "-workbench.action.terminal.splitInstance",
+    "when": "terminalProcessSupported && terminalTabsFocus"
+  },
+  {
+    "key": "shift+cmd+\\",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "tab",
+    "command": "-windsurf.prioritized.supercompleteAccept",
+    "when": "editorTextFocus && windsurf.customCompletionShown || editorTextFocus && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible"
+  },
+  {
+    "key": "tab",
+    "command": "acceptSelectedSuggestion",
+    "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+  }
+]

@@ -1,0 +1,6 @@
+[user]
+name = Kyle Davis
+email = kad-gh@stoke.com
+
+[core]
+sshCommand = ssh -i ~/.ssh/id_kad_stoke

@@ -1,0 +1,98 @@
+{
+  // Core Settings.
+  "editor.tabSize": 2,
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 10,
+  "editor.fontLigatures": true,
+  "editor.lightbulb.enabled": "off",
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.inlayHints.enabled": "off",
+  "editor.rulers": [80],
+  "window.zoomLevel": 1,
+  "workbench.colorTheme": "Simple Dark",
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.editor.alwaysShowEditorActions": true,
+  "workbench.editor.wrapTabs": true,
+  "workbench.commandPalette.preserveInput": true,
+  "workbench.startupEditor": "none",
+  "workbench.tips.enabled": false,
+  "workbench.tree.indent": 12,
+  "workbench.editor.closeEmptyGroups": false,
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.list.horizontalScrolling": true,
+  "breadcrumbs.symbolPath": "off",
+  "breadcrumbs.enabled": false,
+  "update.showReleaseNotes": false,
+  "explorer.confirmDelete": false,
+  "explorer.autoReveal": false,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.eol": "\n",
+  "files.associations": {
+    "*.css": "tailwindcss",
+    ".funcignore": "plaintext",
+    "*.rest": "http",
+    "*.just": "just"
+  },
+  "terminal.integrated.defaultLocation": "editor",
+  // Version control settings.
+  "git.openRepositoryInParentFolders": "never",
+  "gitlens.showWhatsNewAfterUpgrades": false,
+  "gitlens.currentLine.enabled": false,
+  "gitlens.currentLine.pullRequests.enabled": false,
+  "gitlens.blame.toggleMode": "window",
+  "gitlens.codeLens.enabled": false,
+  // General extension settings.
+  "trailing-spaces.backgroundColor": "rgba(255,0,0,0.075)",
+  "trailing-spaces.borderColor": "rgba(255,100,100,0.1)",
+  // Extension settings for specific file types.
+  "evenBetterToml.formatter.allowedBlankLines": 1,
+  "evenBetterToml.formatter.alignComments": true,
+  "evenBetterToml.formatter.alignEntries": false,
+  "evenBetterToml.formatter.arrayTrailingComma": true,
+  "evenBetterToml.formatter.columnWidth": 80,
+  "markdown.preview.scrollEditorWithPreview": false,
+  "markdown.preview.scrollPreviewWithEditor": false,
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.autoClosingTags": false,
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "enter",
+    "enterFrom",
+    "enterTo",
+    "leave",
+    "leaveFrom",
+    "leaveTo"
+  ],
+  "tailwindCSS.includeLanguages": {
+    "mdx": "mdx"
+  },
+  // Language specific settings.
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "[mdx]": {
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 80
+  },
+  // Potentially deprecated settings (or uninstalled extensions):
+  "python.analysis.typeCheckingMode": "standard",
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.extraPaths": [".venv", "python/.venv", "python"],
+  "basedpyright.analysis.typeCheckingMode": "standard",
+  "basedpyright.analysis.extraPaths": [".venv", "python/.venv", "python"],
+  "python.pythonPath": "./python/.venv/bin/python",
+  "python.autoComplete.extraPaths": [".venv", "python/.venv", "python"],
+  "windsurfPyright.analysis.autoImportCompletions": true,
+  // Unorganized settings:
+  "===================================": "==================================="
+}
