@@ -121,7 +121,8 @@ alias lst="eza -la --icons --git --tree --level 2"
 # Source other zsh files.
 # =============================================================================
 
-[[ ! -f ~/.vcs.zsh ]] || source ~/.vcs.zsh
+# [[ ! -f ~/.vcs.zsh ]] || source ~/.vcs.zsh
+[[ ! -f ~/.graphite.zsh ]] || source ~/.graphite.zsh
 
 # =============================================================================
 # nvm (nodejs version manager).
