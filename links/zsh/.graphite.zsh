@@ -67,6 +67,33 @@ function st() {
   esac
 }
 
+# Prints detailed current status of the repository.
+#
+# Accepts no arguments.
+function stt() {
+  if [ -n "$1" ]; then
+    print_err "There should be no arguments, too many arguments provided."
+    return 1
+  fi
+
+  case $(vcs_kind) in
+    git)
+      git status
+      return 0
+      ;;
+    graphite)
+      # TODO: -n 0 doesn't work, figure out how to only show things starting
+      # with ◉, and then stopping output when you see ◯ (without losing color).
+      gt log -n 1
+      return 0
+      ;;
+    *)
+      vcs_none
+      return 1
+      ;;
+  esac
+}
+
 # Prints a short graph of the current repository's commit structure. Alias
 # to force the git version even in graphite.
 function gsl() {
