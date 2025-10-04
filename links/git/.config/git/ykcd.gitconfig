@@ -1,0 +1,6 @@
+[user]
+name = Kyle Davis
+email = kyle@ykcd.dev
+
+[core]
+sshCommand = ssh -i ~/.ssh/id_ykcd_ed25519
