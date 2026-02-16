@@ -31,31 +31,41 @@ alt-shift-r = 'reload-config'
 # Common Apps
 # =============================================================================
 
-# Switch to apps.
-alt-enter = 'exec-and-forget open "/Applications/WezTerm.app"'
+# Editor.
+# alt-e = 'exec-and-forget open "/Applications/Zed.app"'
+# alt-e = 'exec-and-forget open -a "Visual Studio Code"'
+# alt-v = 'exec-and-forget open -a "Visual Studio Code"'
+# alt-w = 'exec-and-forget open -a "Visual Studio Code"'
+alt-e = 'exec-and-forget open -a "VS Code"'
+alt-v = 'exec-and-forget open -a "VS Code"'
+alt-w = 'exec-and-forget open -a "VS Code"'
+
 # Workaround to prevent opening zen in "troubleshoot" mode.
-alt-a = 'exec-and-forget MOZ_DISABLE_SAFE_MODE_KEY=1 open "/Applications/Zen.app"'
-alt-e = 'exec-and-forget open "/Applications/VS Code.app"'
-alt-v = 'exec-and-forget open "/Applications/VS Code.app"'
-alt-w = 'exec-and-forget open "/Applications/VS Code.app"'
-# alt-e = 'exec-and-forget open "/Applications/Windsurf - Next.app"'
-# alt-w = 'exec-and-forget open "/Applications/Windsurf - Next.app"'
-# alt-o = 'exec-and-forget open "/Applications/Obsidian.app"'
-# alt-m = 'exec-and-forget open "/Applications/Superhuman.app"'
+# alt-a = 'exec-and-forget MOZ_DISABLE_SAFE_MODE_KEY=1 open "/Applications/Zen.app"'
+alt-a = 'exec-and-forget open "/Applications/Arc.app"'
+
+# Terminal.
+alt-enter = 'exec-and-forget open "/Applications/WezTerm.app"'
+alt-shift-enter = 'exec-and-forget open -n "/Applications/WezTerm.app"'
+
+# Others.
+alt-m = 'exec-and-forget open "/Applications/Superhuman.app"'
 alt-s = 'exec-and-forget open "/Applications/Slack.app"'
 alt-p = 'exec-and-forget open "/Applications/Postman.app"'
 alt-b = 'exec-and-forget open "/Applications/Bitwarden.app"'
-# alt-f = 'exec-and-forget open "/Applications/Figma.app"'
+alt-f = 'exec-and-forget open "/Applications/Figma.app"'
 alt-l = 'exec-and-forget open "/Applications/Linear.app"'
-# alt-g = 'exec-and-forget open "/Applications/GitKraken.app"'
+alt-d = 'exec-and-forget open -a "Docker Desktop"'
 alt-o = 'exec-and-forget open "/Applications/Beekeeper Studio.app"'
+
+# alt-g = 'exec-and-forget open "/Applications/GitKraken.app"'
 # alt-c = 'exec-and-forget open "/Applications/Claude.app"'
 # alt-k = 'exec-and-forget open "/Applications/KafkIO.app"'
 # alt-r = 'exec-and-forget open "/Applications/Redis Insight.app"'
-alt-d = 'exec-and-forget open -a "Docker Desktop"'
 
-# Open new windows for apps.
-alt-shift-enter = 'exec-and-forget open -n "/Applications/WezTerm.app"'
+# alt-e = 'exec-and-forget open "/Applications/Windsurf - Next.app"'
+# alt-w = 'exec-and-forget open "/Applications/Windsurf - Next.app"'
+# alt-o = 'exec-and-forget open "/Applications/Obsidian.app"'
 
 # =============================================================================
 # Workspaces
@@ -125,12 +135,16 @@ alt-shift-equal = 'resize smart +50'
 [[on-window-detected]]
 run = 'layout floating'
 
-# [[on-window-detected]]
-# if.app-id = 'com.microsoft.VSCode'
-# check-further-callbacks = false
-# run = ['layout floating', 'move-node-to-workspace 2']
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 check-further-callbacks = false
-run = 'move-node-to-workspace 3'
+run = 'layout tiling'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+check-further-callbacks = false
+run = ['layout tiling']

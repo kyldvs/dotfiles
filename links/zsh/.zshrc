@@ -155,10 +155,40 @@ export PATH="/Users/kad/.local/bin:$PATH"
 export PATH="/Users/kad/go/bin:$PATH"
 
 # =============================================================================
+# Bun Setup
+# =============================================================================
+
+# bun completions
+[ -s "/Users/kad/.bun/_bun" ] && source "/Users/kad/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# =============================================================================
+# Environment variables.
+# =============================================================================
+
+if [ -f ~/.config/env/.env ]; then
+    source ~/.config/env/.env
+fi
+
+# =============================================================================
 # Shell integrations.
 # =============================================================================
 
 eval "$(fzf --zsh)"
 
-# Note: This will replace the "cd" command with zoxide.
-eval "$(zoxide init --cmd cd zsh)"
+# Initialize zoxide without replacing cd, then create a defensive cd wrapper.
+# Falls back to builtin cd if __zoxide_z isn't available (e.g., in subshells).
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
+function cd() {
+  if (( $+functions[__zoxide_z] )); then
+    __zoxide_z "$@"
+  else
+    builtin cd "$@"
+  fi
+}

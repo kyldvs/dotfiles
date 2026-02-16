@@ -30,5 +30,8 @@ path = ~/.config/git/kyldvs.gitconfig
 [includeIf "gitdir:~/stoke/"]
 path = ~/.config/git/stoke.gitconfig
 
+[includeIf "gitdir:~/swarm/"]
+path = ~/.config/git/stoke.gitconfig
+
 [includeIf "gitdir:~/ykcd/"]
 path = ~/.config/git/ykcd.gitconfig

@@ -16,16 +16,29 @@ alias print_err=">&2 echo Error: "
 #
 function vcs_kind() {
   GIT_DIR=$(git rev-parse --git-dir 2> /dev/null)
+
   if [ -n "$GIT_DIR" ]; then
+    # Check for graphite config in the git directory
     GRAPHITE_CONFIG="$GIT_DIR/.graphite_repo_config"
     if [[ -f "$GRAPHITE_CONFIG" ]]; then
       echo "graphite"
       return 1
-    else
-      echo "git"
-      return 1
     fi
+
+    # Also check in the common git directory (for worktrees)
+    GIT_COMMON_DIR=$(git rev-parse --git-common-dir 2> /dev/null)
+    if [ -n "$GIT_COMMON_DIR" ] && [ "$GIT_COMMON_DIR" != "$GIT_DIR" ]; then
+      GRAPHITE_CONFIG="$GIT_COMMON_DIR/.graphite_repo_config"
+      if [[ -f "$GRAPHITE_CONFIG" ]]; then
+        echo "graphite"
+        return 1
+      fi
+    fi
+
+    echo "git"
+    return 1
   fi
+
   echo "none"
 }
 

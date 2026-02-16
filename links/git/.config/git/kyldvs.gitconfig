@@ -3,4 +3,4 @@ name = Kyle
 email = github@kyle.dev
 
 [core]
-sshCommand = ssh -i ~/.ssh/id_ed25519
+sshCommand = ssh -i ~/.ssh/id_kyldvs_ed25519
